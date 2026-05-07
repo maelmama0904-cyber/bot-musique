@@ -15,7 +15,7 @@ const {
   AudioPlayerStatus,
 } = require("@discordjs/voice");
 
-const youtubedl = require("youtube-dl-exec");
+const youtubedl = require("youtube-dl-exec").raw;
 const ytSearch = require("yt-search");
 
 const client = new Client({
@@ -101,7 +101,7 @@ async function playMusic(guildId) {
 
   try {
 
-    const subprocess = youtubedl.exec(
+    const subprocess = youtubedl(
       song.url,
       {
         output: "-",
